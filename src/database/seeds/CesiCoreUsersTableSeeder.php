@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\CesiUser;
+
+use Cesi\Core\app\Models\CesiUser;
 use Cesi\Core\app\Models\Role;
 use Illuminate\Database\Seeder;
 

@@ -32,7 +32,7 @@ if($dflt_value) {
         triggerChange: true,
         allowClear: true,
         ajax: {
-            url: '{{ route('coremenu.getdataajax') }}',
+            url: '{{ route('admin.core.menu.getdataajax') }}',
             dataType: 'json',
             delay: 250,
             data: function (params) {

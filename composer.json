@@ -42,7 +42,7 @@
         "Cesi\\Core\\CesiCoreServiceProvider"
       ]
     }
-  }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true
 }

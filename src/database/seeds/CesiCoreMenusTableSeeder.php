@@ -54,45 +54,45 @@ class CesiCoreMenusTableSeeder extends Seeder
             'id'            => '4',
             'name'          => 'Usuarios',
             'type'          => 'route',
-            'link'          => 'admin.core.users.list',
+            'link'          => 'admin.core.user.list',
             'icon'          => 'fa-user',
             'is_protected'  => '1',
         ]);
         $menuAdmin->appendNode($menuUsers);
-        $this->createPermissions('core.users');
+        $this->createPermissions('core.user');
 
         $menuRoles = CoreMenu::create([
             'id'            => '5',
             'name'          => 'Roles',
             'type'          => 'route',
-            'link'          => 'admin.core.roles.list',
+            'link'          => 'admin.core.role.list',
             'icon'          => 'fa-user-circle',
             'is_protected'  => '1',
         ]);
         $menuAdmin->appendNode($menuRoles);
-        $this->createPermissions('core.roles');
+        $this->createPermissions('core.role');
 
         $menuPermisions = CoreMenu::create([
             'id'            => '6',
             'name'          => 'Permisos',
             'type'          => 'route',
-            'link'          => 'admin.core.permissions.list',
+            'link'          => 'admin.core.permission.list',
             'icon'          => 'fa-key',
             'is_protected'  => '1',
         ]);
         $menuAdmin->appendNode($menuPermisions);
-        $this->createPermissions('core.permissions');
+        $this->createPermissions('core.permission');
 
         $menuMenus = CoreMenu::create([
             'id'            => '7',
             'name'          => 'Menus',
             'type'          => 'route',
-            'link'          => 'admin.core.menus.list',
+            'link'          => 'admin.core.menu.list',
             'icon'          => 'fa-th-list',
             'is_protected'  => '1',
         ]);
         $menuAdmin->appendNode($menuMenus);
-        $this->createPermissions('core.menus');
+        $this->createPermissions('core.menu');
     }
 
     public function createPermissions($name)

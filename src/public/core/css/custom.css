@@ -1,0 +1,14 @@
+.form-block {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+
+.fade:not(.show) {
+    display: none;
+}
+
+.modal-xl {
+    max-width: 90% !important;
+    width: 90% !important;
+}

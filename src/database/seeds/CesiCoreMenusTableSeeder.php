@@ -34,7 +34,7 @@ class CesiCoreMenusTableSeeder extends Seeder
             'name'          => 'Dashboard',
             'type'          => 'route',
             'link'          => 'admin.dashboard',
-            'icon'          => 'fa-dashboard',
+            'icon'          => 'fa-tachometer-alt',
             'is_protected'  => '1',
         ]);
         $menuRoot->appendNode($menuDashboard);
@@ -44,7 +44,7 @@ class CesiCoreMenusTableSeeder extends Seeder
             'name'          => 'Administration',
             'type'          => 'separator',
             'link'          => '',
-            'icon'          => 'fa-group',
+            'icon'          => 'fa-users',
             'is_protected'  => '1',
         ]);
 
@@ -54,45 +54,45 @@ class CesiCoreMenusTableSeeder extends Seeder
             'id'            => '4',
             'name'          => 'Usuarios',
             'type'          => 'route',
-            'link'          => 'admin.users.list',
+            'link'          => 'admin.core.users.list',
             'icon'          => 'fa-user',
             'is_protected'  => '1',
         ]);
         $menuAdmin->appendNode($menuUsers);
-        $this->createPermissions('users');
+        $this->createPermissions('core.users');
 
         $menuRoles = CoreMenu::create([
             'id'            => '5',
             'name'          => 'Roles',
             'type'          => 'route',
-            'link'          => 'admin.roles.list',
-            'icon'          => 'fa-users',
+            'link'          => 'admin.core.roles.list',
+            'icon'          => 'fa-user-circle',
             'is_protected'  => '1',
         ]);
         $menuAdmin->appendNode($menuRoles);
-        $this->createPermissions('roles');
+        $this->createPermissions('core.roles');
 
         $menuPermisions = CoreMenu::create([
             'id'            => '6',
             'name'          => 'Permisos',
             'type'          => 'route',
-            'link'          => 'admin.permissions.list',
+            'link'          => 'admin.core.permissions.list',
             'icon'          => 'fa-key',
             'is_protected'  => '1',
         ]);
         $menuAdmin->appendNode($menuPermisions);
-        $this->createPermissions('permissions');
+        $this->createPermissions('core.permissions');
 
         $menuMenus = CoreMenu::create([
             'id'            => '7',
             'name'          => 'Menus',
             'type'          => 'route',
-            'link'          => 'admin.menus.list',
+            'link'          => 'admin.core.menus.list',
             'icon'          => 'fa-th-list',
             'is_protected'  => '1',
         ]);
         $menuAdmin->appendNode($menuMenus);
-        $this->createPermissions('menus');
+        $this->createPermissions('core.menus');
     }
 
     public function createPermissions($name)

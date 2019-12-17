@@ -15,6 +15,7 @@ return [
     'administration'         => 'ADMINISTRACIÓN',
     'user'                   => 'USUARIO',
     'logout'                 => 'Salir',
+    'sign_in'                => 'Iniciar sesión',
     'login'                  => 'Iniciar sesión',
     'register'               => 'Crear usuario',
     'name'                   => 'Nombre',

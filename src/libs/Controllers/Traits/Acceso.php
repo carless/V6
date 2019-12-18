@@ -164,4 +164,34 @@ trait Acceso
 
         return true;
     }
+
+    /**
+     *
+     * @param $user
+     */
+    public function iniciarPermisos($user)
+    {
+        // dd($this->accessActions);
+
+        foreach ($this->access as $accion) {
+            // echo "Permission Name : " . $this->getPermissionName() . "." . $accion . "<br/>";
+            // echo "Guard Name : " . $this->getGuardName() . "<br/>";
+
+            $p = Permission::findOrCreate($this->getPermissionName() . "." . $accion , $this->getGuardName());
+
+            // if(($p && $user && $user->hasPermissionTo($p)) || !$p) {
+            if($user->hasPermissionTo($p)) {
+                // return true
+            } else {
+                if ($user && $user->hasRole('super-admin')) {
+                    $roleSAdm = Role::findByName('super-admin');
+                    $roleSAdm->givePermissionTo($p);
+
+                    // return true;
+                }
+            }
+        }
+
+        // die();
+    }
 }

@@ -5,6 +5,7 @@
 <script src="{{ asset('vendor/cesi/core/plugins/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>
 
 <script src="{{ asset('vendor/cesi/core/plugins/select2/js/select2.full.min.js') }}" ></script>
+<script src="{{ asset('vendor/cesi/core/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}" ></script>
 
 <script src="{{ asset('vendor/cesi/core/plugins/sweetalert2/sweetalert2.min.js') }}" ></script>
 

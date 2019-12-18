@@ -55,6 +55,11 @@ body :-ms-input-placeholder {
     overflow: hidden;
 }
 
+form {
+    position: relative;
+    z-index: 2;
+}
+
 .bg-bubbles {
     position: absolute;
     top: 0;

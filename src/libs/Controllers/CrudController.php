@@ -288,6 +288,7 @@ class CrudController extends BaseController
     {
         $this->usuario = Auth::user();
 
+        $this->iniciarPermisos($this->usuario);
         $this->initColumns();
         $this->initButtons();
     }

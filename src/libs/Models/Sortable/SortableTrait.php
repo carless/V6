@@ -19,9 +19,9 @@ trait SortableTrait
     public static function bootSortableTrait()
     {
         static::creating(function ($model) {
-            if ($model instanceof Sortable && $model->shouldSortWhenCreating()) {
+            // if ($model instanceof Sortable && $model->shouldSortWhenCreating()) {
                 $model->setHighestOrderNumber();
-            }
+            // }
         });
     }
 

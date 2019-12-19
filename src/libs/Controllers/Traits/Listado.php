@@ -81,7 +81,8 @@ trait Listado
 
         // $tmpTotalRows = $this->query->get();
         // $this->setTotalRows(count($tmpTotalRows));
-        $entries = $this->getQuery()
+        // $entries = $this->getQuery()
+        $entries = $this->getBaseQuery()
             ->offset($start)
             ->limit($limit)
             ->orderBy($this->getDefaultOrderColumn(), $this->getDefaultOrderDirection())

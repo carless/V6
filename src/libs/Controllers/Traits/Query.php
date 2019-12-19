@@ -17,6 +17,11 @@ trait Query
         return $this->query;
     }
 
+    public function getBaseQuery()
+    {
+        return $this->getModel()->select('*');
+    }
+
     // ----------------
     // ADVANCED QUERIES
     // ----------------

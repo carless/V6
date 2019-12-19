@@ -286,7 +286,7 @@ class CrudController extends BaseController
      */
     public function setup()
     {
-        $this->usuario = Auth::user();
+        $this->usuario = cesi_user();
 
         $this->iniciarPermisos($this->usuario);
         $this->initColumns();

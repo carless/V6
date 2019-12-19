@@ -47,7 +47,8 @@
                     }
                 };
 
-                $menuRoot = Cesi\Core\app\Models\CoreMenu::get()->first();
+                // $menuRoot = Cesi\Core\app\Models\CoreMenu::get()->first();
+                $menuRoot = Cesi\Core\app\Models\CoreMenu::whereIsRoot()->first();
                 $traverse($menuRoot->children);
                 ?>
             </ul>

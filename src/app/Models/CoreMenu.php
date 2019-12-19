@@ -39,7 +39,7 @@ class CoreMenu extends Model
 
     public function children()
     {
-        return $this->hasMany(CoreMenu::class, 'parent_id');
+        return $this->hasMany(CoreMenu::class, 'parent_id')->orderBy('lft');;
     }
 
     public function hasChildren()

@@ -72,6 +72,17 @@ Route::group([
     CESI::registerRouter('user', 'UserCrudController');
     CESI::registerRouter('permission', 'PermissionController');
     CESI::registerRouter('menu', 'CoreMenuController');
+    Route::get('menu/moveup/{id}',
+        [
+            'as' => 'menu.moveup',
+            'uses' => 'CoreMenuController@moveup'
+        ]);
+
+    Route::get('menu/movedown/{id}',
+        [
+            'as' => 'menu.movedown',
+            'uses' => 'CoreMenuController@movedown'
+        ]);
 });
 
 /*

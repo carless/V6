@@ -71,6 +71,13 @@ class CoreMenuController extends CrudController
                 'label' => trans('cesi::core.menus.fields.rgt'),
                 'type'  => 'text',
                 'orderable' => false,
+            ], [
+                'name'  => 'move',
+                'label' => trans('cesi::core.menus.fields.move'),
+                'type'  => 'model_function',
+                'function_name' => 'DspMove',
+                'width' => '60px',
+                'orderable' => false,
             ],
         ]);
     }
@@ -78,5 +85,23 @@ class CoreMenuController extends CrudController
     public function ajaxFormatResult($record)
     {
         return ['id' => $record->id, 'text' => $record->DspTreeNameRaw()];
+    }
+
+    public function moveup($id)
+    {
+        if ($this->tienePermiso('update')) {
+            $record = $this->getModel()::findOrFail($id);
+            $record->up();
+        }
+        return redirect(route($this->getRouterAlias().'.list'));
+    }
+
+    public function movedown($id)
+    {
+        if ($this->tienePermiso('update')) {
+            $record = $this->getModel()::findOrFail($id);
+            $record->down();
+        }
+        return redirect(route($this->getRouterAlias().'.list'));
     }
 }

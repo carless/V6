@@ -21,12 +21,19 @@ $_search    = trim(Request::input('buscar', ''));
 
                     <form method="POST" id="search-form" class="form-inline mt-2" role="form" style="display: block;overflow: hidden;width: 100%;">
                         <div class="float-left">
+                            <label for="filter_fltStatus" class="label_filter">{{trans('cesi::core.crud.search_placeholder')}}</label>
                             <div class="input-group margin-r-5" style="width: 250px;">
                                 <input type="text" name="buscar" class="form-control" value="{{ $_search }}" placeholder="{{trans('cesi::core.crud.search_placeholder')}}" />
                                 <div class="input-group-append">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                                 </div>
                             </div>
+                        </div>
+
+                        <div id="filterContainer" class="box-header box-filtros float-left">
+                            @foreach ($filtros as $filtro)
+                                @include($filtro->view)
+                            @endforeach
                         </div>
 
                         <div class="card-tools float-right">
@@ -40,6 +47,7 @@ $_search    = trim(Request::input('buscar', ''));
                         </div>
                     </form>
                 </div>
+                
 
                 <div class="card-body p-0">
                     <table id="crudTable" class="table table-condensed table-hover table-bordered" style="margin-top: 0px !important;">
@@ -113,18 +121,16 @@ $_search    = trim(Request::input('buscar', ''));
                         d.token = '{{csrf_token()}}';
                         d.buscar = jQuery('input[name=buscar]').val();
                         <?php
-                        /*
-                    if (count($filtros) > 0) {
-                        print "d.filter = {};\n";
-                        foreach($filtros as $filtro) {
-                            print "d.filter['" . $filtro->name ."'] = jQuery('#filter_" . $filtro->name. "').val();\n";
+                        if (count($filtros) > 0) {
+                            print "d.filter = {};\n";
+                            foreach($filtros as $filtro) {
+                                print "d.filter['" . $filtro->name ."'] = jQuery('#filter_" . $filtro->name. "').val();\n";
+                            }
                         }
-                    }
-                        */
                         ?>
                     }
                 },
-                scrollY: '60vh',
+                scrollY: '59vh',
                 scroller: true,
                 columns: [
                         <?php

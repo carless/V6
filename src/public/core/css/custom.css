@@ -12,3 +12,15 @@
     max-width: 90% !important;
     width: 90% !important;
 }
+
+.label_filter {
+    text-align: left;
+    display: block !important;
+    overflow: hidden;
+}
+
+.box-filtros .filtro {
+    display: block;
+    overflow: hidden;
+    margin-left: 5px;
+}

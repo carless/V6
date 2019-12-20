@@ -4,6 +4,7 @@ namespace Cesi\Core\libs\Controllers;
 use Cesi\Core\libs\Controllers\Traits\Acceso;
 use Cesi\Core\libs\Controllers\Traits\Buttons;
 use Cesi\Core\libs\Controllers\Traits\Columns;
+use Cesi\Core\libs\Controllers\Traits\Filtros;
 use Cesi\Core\libs\Controllers\Traits\HeadingsAndTitle;
 use Cesi\Core\libs\Controllers\Traits\Listado;
 use Cesi\Core\libs\Controllers\Traits\Operation;
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Schema;
 class CrudController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    use Acceso, Operation, HeadingsAndTitle, Views, Buttons, Columns, Read, Query, Listado, Save;
+    use Acceso, Operation, HeadingsAndTitle, Views, Buttons, Columns, Read, Query, Listado, Save, filtros;
     use OperationList, OperationCreate, OperationUpdate, OperationDelete;
 
     private $usuario = null;

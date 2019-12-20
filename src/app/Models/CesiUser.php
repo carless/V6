@@ -18,6 +18,15 @@ class CesiUser extends User
     protected $table = 'users';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password', 'status',
+    ];
+
+    /**
      * Send the password reset notification.
      *
      * @param string $token

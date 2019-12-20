@@ -79,10 +79,20 @@ trait Listado
         $limit  = $this->getRequest()->input('length');
         $start  = $this->getRequest()->input('start');
 
+        $myquery = $this->getBaseQuery();
+
+        if ($this->getRequest()->input('filter')) {
+            foreach($this->getfilters() as $filter) {
+                if (!is_null($filter->currentValue)) {
+                    $myquery->where($filter->queryName, '=', $filter->currentValue);
+                }
+            }
+        }
+
         // $tmpTotalRows = $this->query->get();
         // $this->setTotalRows(count($tmpTotalRows));
         // $entries = $this->getQuery()
-        $entries = $this->getBaseQuery()
+        $entries = $myquery
             ->offset($start)
             ->limit($limit)
             ->orderBy($this->getDefaultOrderColumn(), $this->getDefaultOrderDirection())

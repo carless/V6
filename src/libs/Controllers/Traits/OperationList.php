@@ -26,6 +26,7 @@ trait OperationList
             $this->data['columnOrderNum'] = $this->getColumnNumericIndex($this->getDefaultOrderColumn());
             $this->data['columnOrderName'] = $this->getDefaultOrderColumn();
             $this->data['columnOrderDire'] = $this->getDefaultOrderDirection();
+            $this->data['filtros']      = $this->getfilters();
 
             // load the view from /resources/views/vendor/Cesi/crud/ if it exists, otherwise load the one in the package
             return view($this->getListView(), $this->data);

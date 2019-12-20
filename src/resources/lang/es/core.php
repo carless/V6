@@ -165,6 +165,7 @@ return [
             'name'      => 'Nombre Usuario',
             'email'     => 'Email',
             'password'  => 'Contraseña',
+            'status'    => 'Estado',
             'confirmpassword' => 'Confirmar contraseña',
         ],
         'validations' => [
@@ -189,6 +190,7 @@ return [
             'level' => 'Nivel',
             'lft'   => 'lft',
             'rgt'   => 'rgt',
+            'move'  => 'move',
             'parent_id'   => 'Parent',
         ],
     ],

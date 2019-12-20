@@ -63,6 +63,17 @@
             <div class="card card-primary">
                 <div class="card-body">
                     <div class="form-group row">
+                        {{ Form::label('status' , trans('cesi::core.permissionmanager.fields_user.status') . ' :', ['class' => 'col-md-5 col-sm-5 col-xs-12 col-form-label text-right']) }}
+
+                        <div class="col-md-7 col-sm-7 col-xs-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" id="status_1" name="status" value="1" @if($entry->status) checked @endif >
+                                    <label for="status_1" class="custom-control-label">Activo</label>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         {{ Form::label('roles' , trans('cesi::core.permissionmanager.roles_assigned') . ' :', ['class' => 'col-md-5 col-sm-5 col-xs-12 col-form-label text-right']) }}
 
                         <div class="col-md-7 col-sm-7 col-xs-12">

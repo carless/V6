@@ -120,4 +120,22 @@ class CoreMenu extends Model
         }
         return $lreturn;
     }
+
+    public function DspMove()
+    {
+        $html = '';
+
+        $routerAlias = 'admin.core.menu';
+        $html .= "<a href='" . route( $routerAlias.'.moveup', $this->getKey()) ."' >";
+        $html .= "<span class='float-left'><i class='fas fa-arrow-alt-circle-up'></i></span>";
+        $html .= "</a>";
+
+        $html .= "&nbsp;";
+        $html .= "<a href='" . route( $routerAlias.'.movedown', $this->getKey()) ."' >";
+        $html .= "<span class='float-right'><i class='fas fa-arrow-alt-circle-down'></i></span>";
+        $html .= "</a>";
+        // $html .= "&nbsp;" . $this->lft . "&nbsp;" . $this->rgt;
+
+        return $html;
+    }
 }

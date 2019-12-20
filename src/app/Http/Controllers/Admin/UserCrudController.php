@@ -20,8 +20,26 @@ class UserCrudController extends CrudController
 
         $this->setDefaultOrderColumn('name');
         $this->setDefaultOrderDirection('asc');
-     
+
+        $this->initFilters();
+
         parent::setup();
+    }
+
+    public function initFilters() {
+
+        $this->addFilter([
+            'name'  => 'fltStatus',
+            'label' => trans('cesi::core.permissionmanager.fields_user.status'),
+            'type'  => 'select2',
+            'datos' => [
+                '1' => 'Activo',
+                '0' => 'Desactivado',
+            ],
+            'style' => 'width:190px;',
+            'placeholder' => trans('cesi::core.permissionmanager.fields_user.status'),
+            'queryName' => 'users.status',
+        ]);
     }
 
     public function initColumns()
@@ -32,20 +50,22 @@ class UserCrudController extends CrudController
                 'name'  => 'name',
                 'label' => trans('cesi::core.permissionmanager.name'),
                 'type'  => 'text',
-            ],
-            [
+            ], [
                 'name'  => 'email',
                 'label' => trans('cesi::core.permissionmanager.email'),
                 'type'  => 'email',
-            ],
-            [ // n-n relationship (with pivot table)
+            ], [ // n-n relationship (with pivot table)
                 'label'     => trans('cesi::core.permissionmanager.roles'), // Table column heading
                 'type'      => 'select_multiple',
                 'name'      => 'roles', // the method that defines the relationship in your Model
                 'entity'    => 'roles', // the method that defines the relationship in your Model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'model'     => config('permission.models.role'), // foreign key model
-            ],
+            ], [
+                'name'  => 'status',
+                'label' => trans('cesi::core.permissionmanager.fields_user.status'),
+                'type'  => 'sino',
+            ]
         ]);
     }
 
@@ -121,6 +141,11 @@ class UserCrudController extends CrudController
         $values = [];
         $values['name']     = $request->input('name', '');
         $values['email']    = $request->input('email', '');
+        $values['status']   = $request->input('status', 0);
+
+        // dd($request);
+        // dd($values);
+
         // If creating user or providing password.
         $password = $request->input('password', null);
         if ($creating || !empty($password)) {
@@ -138,6 +163,10 @@ class UserCrudController extends CrudController
             } else {
                 unset($values['password']);
             }
+        }
+
+        if (!array_key_exists('status', $values)) {
+            $values['status'] = 0;
         }
 
         return $values;

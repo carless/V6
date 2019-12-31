@@ -20,6 +20,7 @@ trait OperationList
             $this->data['routerAlias']  = $this->getRouterAlias();
             $this->data['contentClass'] = $this->getListContentClass();
             $this->data['heading'] = $this->getHeading() ?? $this->entity_name_plural;
+            $this->data['subheading'] = '';
             $this->data['permissionName']   = $this->getPermissionName();
             $this->data['buttons_top'] = $this->getButtons()->where('stack', 'top');
             $this->data['columns'] = $this->getColumns();

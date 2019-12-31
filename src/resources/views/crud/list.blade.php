@@ -2,6 +2,29 @@
 
 @section('header')
     <div class="content-header">
+        @if (!empty($heading))
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-6">
+                        <h1>
+                            <span class="text-capitalize">{!! $heading !!}</span>
+                            <small>{!! $subheading !!}</small>
+                        </h1>
+                    </div><!-- /.col -->
+                    <div class="col-6">
+                        <div class="box-actions float-right">
+                            @foreach ($buttons_top as $button)
+                                @if ($button->type == 'model_function')
+                                    {!! $model->{$button->content}(); !!}
+                                @else
+                                    @include($button->content, ['button' => $button])
+                                @endif
+                            @endforeach
+                        </div>
+                    </div><!-- /.col -->
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
 
@@ -15,10 +38,6 @@ $_search    = trim(Request::input('buscar', ''));
             <!-- Default box -->
             <div class="card card-default">
                 <div class="card-header" style="background-color: transparent!important;">
-                    <h3 class="card-title text-capitalize mb-0">{!! $heading !!}</h3>
-
-                    <div class="clearfix"></div>
-
                     <form method="POST" id="search-form" class="form-inline mt-2" role="form" style="display: block;overflow: hidden;width: 100%;">
                         <div class="float-left">
                             <label for="filter_fltStatus" class="label_filter">{{trans('cesi::core.crud.search_placeholder')}}</label>
@@ -37,13 +56,7 @@ $_search    = trim(Request::input('buscar', ''));
                         </div>
 
                         <div class="card-tools float-right">
-                            @foreach ($buttons_top as $button)
-                                @if ($button->type == 'model_function')
-                                    {!! $model->{$button->content}(); !!}
-                                @else
-                                    @include($button->content, ['button' => $button])
-                                @endif
-                            @endforeach
+
                         </div>
                     </form>
                 </div>
@@ -211,6 +224,18 @@ $_search    = trim(Request::input('buscar', ''));
                 },
                 dom: "<'row'<'col-sm-12'tr>>" +
                     "<'row card-footer'<'col-sm-5'i><'col-sm-7'p>>"
+            });
+
+            oTable.on('draw', function () {
+                jQuery(".loader").fadeOut("slow");
+//                console.log( 'Redraw occurred at: '+new Date().getTime() );
+            });
+
+            jQuery('#dtbtnrefresh').on("click touchstart", function (e) {
+                jQuery(".loader").fadeIn("slow");
+                oTable.draw(false);
+                // oTable.ajax.reload();
+                e.preventDefault();
             });
 
             jQuery('#search-form').on('submit', function(e) {

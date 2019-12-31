@@ -51,13 +51,6 @@
         @yield('after_scripts')
         @stack('after_scripts')
 
-        <script type="text/javascript">
-            jQuery(document).ready(function() {
-                jQuery.fn.select2.defaults.set("theme", "bootstrap4");
-                @stack('jquery_document_ready')
-            });
-        </script>
-
         <!-- JavaScripts -->
     </body>
 </html>

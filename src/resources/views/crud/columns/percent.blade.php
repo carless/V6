@@ -1,0 +1,1 @@
+<div style="text-align: right;padding-right: 20px;">{{ number_format($entry->{$column['name']}, 2, '.', '') }} %</div>

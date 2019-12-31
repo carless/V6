@@ -6,6 +6,8 @@
 
 <script src="{{ asset('vendor/cesi/core/plugins/select2/js/select2.full.min.js') }}" ></script>
 <script src="{{ asset('vendor/cesi/core/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}" ></script>
+<script src="{{ asset('vendor/cesi/core/plugins/inputmask/dist/jquery.inputmask.min.js') }}"></script>
+<script src="{{ asset('vendor/cesi/core/plugins/inputmask/dist/bindings/inputmask.binding.js') }}"></script>
 
 <script src="{{ asset('vendor/cesi/core/plugins/sweetalert2/sweetalert2.min.js') }}" ></script>
 
@@ -21,5 +23,35 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    jQuery(document).ready(function($) {
+        jQuery.fn.select2.defaults.set("theme", "bootstrap4");
+
+        jQuery("input.percent").inputmask("percentage", {
+            autoUnmask: true,
+            removeMaskOnSubmit: true,
+            clearMaskOnLostFocus: true
+        });
+
+        jQuery("input.price").inputmask("currency", {
+            autoUnmask: true,
+            prefix: '',
+            suffix: ' €',
+            digits: '2',
+            removeMaskOnSubmit: true,
+            clearMaskOnLostFocus: true
+        });
+
+        jQuery("input.numerodia").inputmask("integer", {
+            autoUnmask: true,
+            min: 0,
+            max: 31,
+            removeMaskOnSubmit: true,
+            clearMaskOnLostFocus: true
+        });
+
+        @stack('jquery_document_ready')
+
     });
 </script>

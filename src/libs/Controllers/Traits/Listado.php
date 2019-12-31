@@ -79,7 +79,8 @@ trait Listado
         $limit  = $this->getRequest()->input('length');
         $start  = $this->getRequest()->input('start');
 
-        $myquery = $this->getBaseQuery();
+        // $myquery = $this->getBaseQuery();
+        $myquery = $this->getQuery();
 
         if ($this->getRequest()->input('filter')) {
             foreach($this->getfilters() as $filter) {

@@ -20,30 +20,32 @@
                 $traverse = function ($menus) use (&$traverse) {
                     foreach ($menus as $menu) {
                         $submenus = count($menu->children);
+                        $lpermitido = $menu->checkTieneAlgunPermiso();
 
-                        if ($submenus) {
-                            echo "<li class='nav-item has-treeview'>\n";
-                        } else {
-                            echo "<li class='nav-item'>\n";
-                        }
+                        if ($lpermitido) {
+                            if ($submenus) {
+                                echo "<li class='nav-item has-treeview'>\n";
+                            } else {
+                                echo "<li class='nav-item'>\n";
+                            }
 
-                        echo '<a href="' . $menu->getUrl() . '" title="' .$menu->link. '" class="nav-link">';
-                        if ($menu->icon) {
-                            echo '<i class="nav-icon fas ' . $menu->icon . '"></i>';
-                        }
-                        echo '<p>' . $menu->name . '</p>';
-                        if ($submenus) {
-                            echo '<i class="right fas fa-angle-left"></i>';
-                        }
-                        echo "</a>\n";
+                            echo '<a href="' . $menu->getUrl() . '" title="' .$menu->link. '" class="nav-link">';
+                            if ($menu->icon) {
+                                echo '<i class="nav-icon fas ' . $menu->icon . '"></i>';
+                            }
+                            echo '<p>' . $menu->name . '</p>';
+                            if ($submenus) {
+                                echo '<i class="right fas fa-angle-left"></i>';
+                            }
+                            echo "</a>\n";
 
-                        if ($submenus) {
-                            echo "<ul class='nav nav-treeview'>\n";
-                            $traverse($menu->children);
-                            echo "</ul>\n";
+                            if ($submenus) {
+                                echo "<ul class='nav nav-treeview'>\n";
+                                $traverse($menu->children);
+                                echo "</ul>\n";
+                            }
+                            echo "</li>\n";
                         }
-
-                        echo "</li>\n";
                     }
                 };
 

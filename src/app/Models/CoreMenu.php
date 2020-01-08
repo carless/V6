@@ -105,7 +105,7 @@ class CoreMenu extends Model
                         // echo "findOrCreate Permission to " . $menu->link . "<br/>";
 
                         \Spatie\Permission\Models\Permission::findOrCreate($menu->link, 'web');
-                        $lreturn = $lreturn || Auth::user()->hasPermissionTo($menu->link);
+                        $lreturn = $lreturn || cesi_user()->hasPermissionTo($menu->link);
                         // $lreturn = true;
                     } else {
                         // echo "el " . $menu->link . " no existe";
@@ -115,7 +115,7 @@ class CoreMenu extends Model
         } else {
             // echo "findOrCreate Permission to " . $this->link . "<br/>";
             \Spatie\Permission\Models\Permission::findOrCreate($this->link, 'web');
-            $lreturn = $lreturn || Auth::user()->hasPermissionTo($this->link);
+            $lreturn = $lreturn || cesi_user()->hasPermissionTo($this->link);
             // $lreturn = true;
         }
         return $lreturn;

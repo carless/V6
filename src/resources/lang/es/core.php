@@ -66,9 +66,35 @@ return [
 
     'dashboard'     => [
         'title' => 'Panel principal',
+        'name_singular'   => 'Pag.Inicio',
+        'name_plural'     => 'Pags.Inicio',
+        'select' => '- Seleccionar -',
+        'readmore'  => 'Más detalles',
         'user'  => [
             'profile'   => 'Profile',
             'logout'    => 'Desconectar'
+        ],
+        'fields' => [
+            'id'    => 'Id',
+            'name'  => 'Nombre',
+        ]
+    ],
+    'dashboarditems'     => [
+        'name_singular'   => 'Item Pag.Inicio',
+        'name_plural'     => 'Items Pags.Inicio',
+        'fields' => [
+            'id'        => 'Id',
+            'name'      => 'Nombre',
+            'dashboard' => 'Pag.Inicio',
+            'orden'     => 'Orden',
+            'move'      => 'Orden',
+            'area'      => 'Area',
+            'tipo'      => 'Tipo',
+            'titulo'    => 'Titulo',
+            'link'      => 'Enlaçe',
+            'icono'     => 'Icono',
+            'classe'    => 'classe',
+            'sql'       => 'Consulta SQL'
         ]
     ],
 

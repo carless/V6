@@ -33,13 +33,23 @@ class UserCrudController extends CrudController
             'label' => trans('cesi::core.permissionmanager.fields_user.status'),
             'type'  => 'select2',
             'datos' => [
+                '0' => '-Todos-',
                 '1' => 'Activo',
-                '0' => 'Desactivado',
+                '2' => 'Desactivado',
             ],
             'style' => 'width:190px;',
             'placeholder' => trans('cesi::core.permissionmanager.fields_user.status'),
             'queryName' => 'users.status',
-        ]);
+        ], false, function($myQuery, $value) {
+            $valor = intval($value);
+            if ($valor==0) {
+                // nothing todo
+            } else if ($valor==1) {
+                $myQuery->where('users.status', '=', 1);
+            } else if ($valor==2) {
+                $myQuery->where('users.status', '=', 0);
+            }
+        });
     }
 
     public function initColumns()

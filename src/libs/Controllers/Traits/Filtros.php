@@ -80,9 +80,9 @@ trait Filtros
         }
 
         // add a new filter to the interface
-        $filter = new CrudFilter($options, $values, $filter_logic);
+        $filter = new CrudFilter($options, $values, $filter_logic, $fallback_logic);
         $this->filters->push($filter);
-    }
+    }    
 }
 
 class FiltersCollection extends Collection
@@ -105,11 +105,14 @@ class CrudFilter
     public $placeholder;
     public $values;
     public $options;
+    public $logic;
+    public $fallbackLogic;    
     public $currentValue;
     public $view;
     public $queryName;
+    public $queryOperation;
 
-    public function __construct($options, $values, $filter_logic)
+    public function __construct($options, $values, $filter_logic, $fallbackLogic)
     {
         $this->name     = $options['name'];
         $this->type     = $options['type'];
@@ -128,6 +131,13 @@ class CrudFilter
             unset($options['queryName']);
         }
 
+        if (!isset($options['queryOperation'])) {
+            $this->queryOperation = '=';
+        } else {
+            $this->queryOperation = $options['queryOperation'];
+            unset($options['queryOperation']);
+        }
+
         if (!isset($options['view'])) {
             $this->view = 'cesi::crud.filters.'.$this->type;
         } else {
@@ -136,6 +146,9 @@ class CrudFilter
 
         $this->values   = $values;
         $this->options  = $options;
+
+        $this->logic = $filter_logic;
+        $this->fallbackLogic = $fallbackLogic;
 
         if (Request::has('filter.'.$this->name)) {
             $this->currentValue = Request::input('filter.'.$this->name);
@@ -149,5 +162,19 @@ class CrudFilter
         }
 
         return false;
+    }
+
+    /**
+     * @param $myQuery \Illuminate\Database\Eloquent\Builder
+     */
+    public function applyFilter($myQuery)
+    {
+        if (!is_null($this->currentValue)) {
+            if (is_callable($this->logic)) {
+                ($this->logic)($myQuery, $this->currentValue);
+            } else {
+                $myQuery->where($this->queryName, $this->queryOperation, $this->currentValue);
+            }
+        }
     }
 }

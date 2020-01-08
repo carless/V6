@@ -1,6 +1,9 @@
 <?php
 namespace Cesi\Core\app\Http\Controllers;
 
+use Cesi\Core\app\Models\CoreDashboard;
+use Cesi\Core\app\Models\CoreDashboardItem;
+
 class AdminController extends Controller
 {
     protected $data = []; // the information we send to the view
@@ -21,6 +24,28 @@ class AdminController extends Controller
     public function dashboard()
     {
         $this->data['title'] = trans('cesi::core.dashboard.title'); // set the page title
+
+        $dashboardId = 1;
+        $positions = [
+            'top'   => null,
+            'left'  => null,
+            'right' => null,
+            'center'=> null,
+            'bottom'=> null,
+        ];
+
+        $this->data['model'] = CoreDashboard::where('id', '=', $dashboardId)->first();
+        $this->data['positions'] = array();
+
+        foreach ($positions as $key => $position) {
+            $positions[$key] = CoreDashboardItem::where('dashboard_id', '=', $dashboardId)
+                ->where('area', '=', $key )
+                ->orderBy('sorting', 'asc')
+                ->get()
+            ;
+        }
+
+        $this->data['positions'] = $positions;
 
         return view('cesi::dashboard', $this->data);
     }

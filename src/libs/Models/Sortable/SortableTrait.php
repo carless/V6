@@ -120,7 +120,7 @@ trait SortableTrait
         return $this->swapOrderWithModel($swapWithModel);
     }
 
-    public function swapOrderWithModel(Sortable $otherModel)
+    public function swapOrderWithModel($otherModel)
     {
         $orderColumnName = $this->determineOrderColumnName();
 
@@ -135,7 +135,7 @@ trait SortableTrait
         return $this;
     }
 
-    public static function swapOrder(Sortable $model, Sortable $otherModel)
+    public static function swapOrder($model, $otherModel)
     {
         $model->swapOrderWithModel($otherModel);
     }
@@ -146,7 +146,7 @@ trait SortableTrait
             ->ordered()
             ->first();
 
-        if ($firstModel->id === $this->id) {
+        if ($firstModel->id === $this->getKey()) {
             return $this;
         }
 
@@ -155,7 +155,7 @@ trait SortableTrait
         $this->$orderColumnName = $firstModel->$orderColumnName;
         $this->save();
 
-        $this->buildSortQuery()->where($this->getKeyName(), '!=', $this->id)->increment($orderColumnName);
+        $this->buildSortQuery()->where($this->getKeyName(), '!=', $this->getKey())->increment($orderColumnName);
 
         return $this;
     }
@@ -175,7 +175,7 @@ trait SortableTrait
         $this->$orderColumnName = $maxOrder;
         $this->save();
 
-        $this->buildSortQuery()->where($this->getKeyName(), '!=', $this->id)
+        $this->buildSortQuery()->where($this->getKeyName(), '!=', $this->getKey())
             ->where($orderColumnName, '>', $oldOrder)
             ->decrement($orderColumnName);
 

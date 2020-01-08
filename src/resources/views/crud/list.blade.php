@@ -182,11 +182,15 @@ $_search    = trim(Request::input('buscar', ''));
                                 }
                                 // $js .= ", visible: '" . $column['visible'] . "'";
                             }
+
+                            if (isset($column['responsivePriority'])) {
+                                $js .= ", responsivePriority: '" . $column['responsivePriority'] . "'";
+                            }
                             $js .= "},\n";
                             print $js;
                         }
                         ?>
-                    {data: 'actions', name: 'actions', orderable: false, searchable: false, width: '120px'}
+                    {data: 'actions', name: 'actions', responsivePriority: 1, orderable: false, searchable: false, width: '120px'}
                 ],
                 <?php
                         // $orderColumn = $crud->getColumnNumericIndex($crud->getDefaultOrderColumn());

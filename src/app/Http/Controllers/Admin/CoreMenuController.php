@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Carless
- * Date: 13/12/2019
- * Time: 9:16
- */
 namespace Cesi\Core\app\Http\Controllers\Admin;
 
 use Cesi\Core\app\Models\CoreMenu;

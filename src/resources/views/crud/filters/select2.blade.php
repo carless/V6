@@ -32,15 +32,21 @@
         }
     }
 
+    $OtherOptions = '';
+    if (!isset($filtro->options['ajax']) || empty($filtro->options['ajax'])) {
+        $OtherOptions = 'data-minimum-results-for-search="Infinity"';
+    }
+
     ?>
     <select id="filter_{{$filtro->name}}" name="filter[{{$filtro->name}}]" 
         class="form-control smtfilter select2" 
         style="{{ isset($filtro->options['style']) ? $filtro->options['style'] : 'width: 100%;'}}" 
+        {!!$OtherOptions!!} 
         onchange="jQuery('#search-form').submit();">';
-        <option value='{{ $dflt_value }}' {{ $dflt_value ? ' selected' : ''}}>{{$dflt_display}}</option>
+        {{-- <option value='{{ $dflt_value }}' {{ $dflt_value ? ' selected' : ''}}>{{$dflt_display}}</option> --}}
         @if (isset($filtro->options['datos']))
             @foreach ($filtro->options['datos'] as $key => $value)
-                <option value="{{$key}}" {{ $key == $filtro->currentValue ? ' selected' : ''}}>{{$value}}</option>
+                <option value="{{$key}}" {{ $key === $filtro->currentValue ? ' selected' : ''}}>{{$value}}</option>
             @endforeach 
         @endif
     </select>

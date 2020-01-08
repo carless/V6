@@ -84,9 +84,11 @@ trait Listado
 
         if ($this->getRequest()->input('filter')) {
             foreach($this->getfilters() as $filter) {
-                if (!is_null($filter->currentValue)) {
-                    $myquery->where($filter->queryName, '=', $filter->currentValue);
-                }
+
+                $filter->applyFilter($myquery);
+                // if (!is_null($filter->currentValue)) {
+                //    $myquery->where($filter->queryName, '=', $filter->currentValue);
+                // }
             }
         }
 

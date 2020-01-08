@@ -83,6 +83,21 @@ Route::group([
             'as' => 'menu.movedown',
             'uses' => 'CoreMenuController@movedown'
         ]);
+
+    CESI::registerRouter('coredashboard', 'CoreDashboardController');
+    CESI::registerRouter('dashboarditems', 'CoreDashboardItemsController');
+
+    Route::get('dashboarditems/moveup/{id}',
+        [
+            'as' => 'dashboarditems.moveup',
+            'uses' => 'CoreDashboardItemsController@moveup'
+        ]);
+
+    Route::get('dashboarditems/movedown/{id}',
+        [
+            'as' => 'dashboarditems.movedown',
+            'uses' => 'CoreDashboardItemsController@movedown'
+        ]);
 });
 
 /*

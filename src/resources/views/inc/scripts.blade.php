@@ -30,6 +30,7 @@
 
         jQuery("input.percent").inputmask("percentage", {
             autoUnmask: true,
+            digits: 2,
             removeMaskOnSubmit: true,
             clearMaskOnLostFocus: true
         });

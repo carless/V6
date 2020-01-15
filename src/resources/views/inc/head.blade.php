@@ -42,6 +42,7 @@
 <link rel="stylesheet" href="{{ asset('vendor/cesi/core/plugins/pnotify/pnotify.custom.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('vendor/cesi/core/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/cesi/core/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
 
 <link rel="stylesheet" href="{{ asset('vendor/cesi/core/css/cesitheme.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/cesi/core/css/custom.css') }}">

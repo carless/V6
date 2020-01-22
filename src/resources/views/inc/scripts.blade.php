@@ -44,6 +44,24 @@
             clearMaskOnLostFocus: true
         });
 
+        jQuery("input.price_c").inputmask("currency", {
+            autoUnmask: true,
+            prefix: '',
+            suffix: ' €',
+            digits: '2',
+            removeMaskOnSubmit: true,
+            clearMaskOnLostFocus: true
+        });
+
+        jQuery("input.price_v").inputmask("currency", {
+            autoUnmask: true,
+            prefix: '',
+            suffix: ' €',
+            digits: '2',
+            removeMaskOnSubmit: true,
+            clearMaskOnLostFocus: true
+        });
+
         jQuery("input.numerodia").inputmask("integer", {
             autoUnmask: true,
             min: 0,

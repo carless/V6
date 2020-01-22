@@ -115,7 +115,7 @@ trait Save
     }
 
     /**
-     * Classes using this trait have to implement this method.
+     * Asigna/formatea los datos justo antes de validar.
      *
      * @param \Illuminate\Http\Request $request
      * @return array
@@ -126,7 +126,7 @@ trait Save
     }
 
     /**
-     * Asigna/formatea los datos justo antes de guardar-los
+     * Asigna/formatea los datos justo antes de guardar-los. Despues del validate
      *
      * @param \Illuminate\Http\Request $request
      * @param $values

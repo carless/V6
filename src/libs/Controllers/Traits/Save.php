@@ -104,13 +104,21 @@ trait Save
                 break;
         }
 
-        $isModalForm = $request->input('_ismodal' , '0');
-        if ($isModalForm == 1) {
+        if ($request->ajax()) {
+            return response()->json([
+                'status' => 'success',
+                'msg' => 'New item has been saved',
+                'record' => $record
+            ]);
+        } else {
+            $isModalForm = $request->input('_ismodal', '0');
+            if ($isModalForm == 1) {
 //            echo "es un modal form";
 //            die();
-            return view('cesi::crud.editmodalclose');
-        } else {
-            return redirect(route($this->getRouterAlias() . '.list'));
+                return view('cesi::crud.editmodalclose');
+            } else {
+                return redirect(route($this->getRouterAlias() . '.list'));
+            }
         }
     }
 

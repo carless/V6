@@ -88,7 +88,7 @@ trait OperationUpdate
     /**
      * @param \Illuminate\Http\Request $request
      * @param $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
@@ -106,13 +106,20 @@ trait OperationUpdate
                 // flash()->error(trans('cesicore.update_data_failed'));
             }
 
-            $isModalForm = $request->input('_ismodal' , '0');
-            if ($isModalForm == 1) {
-                echo "es un modal form --- error on save ---";
-                die();
-            }
+            if ($request->ajax()) {
+                return response()->json([
+                    'fail' => true,
+                    'msg' => trans('cesi::core.crud.update_data_failed'),
+                ]);
+            } else {
+                $isModalForm = $request->input('_ismodal', '0');
+                if ($isModalForm == 1) {
+                    echo "es un modal form --- error on save ---";
+                    die();
+                }
 
-            return redirect(route($this->getRouterAlias().'.list'));
+                return redirect(route($this->getRouterAlias() . '.list'));
+            }
         } else {
             return view('cesi::errors.401');
         }

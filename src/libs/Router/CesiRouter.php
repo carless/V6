@@ -55,6 +55,12 @@ DELETE  /users/{user}               destroy users.destroy
                 'uses' => $this->controller . '@create'
             ]);
 
+        Route::get($this->name . '/createmodal',
+            [
+                'as' => $this->name . '.createmodal',
+                'uses' => $this->controller . '@createmodal'
+            ]);
+
         Route::post($this->name . '/create',
             [
                 'as' => $this->name . '.store',

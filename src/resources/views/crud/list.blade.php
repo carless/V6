@@ -60,7 +60,7 @@ $_search    = trim(Request::input('buscar', ''));
                         </div>
                     </form>
                 </div>
-                
+
 
                 <div class="card-body p-0">
                     <table id="crudTable" class="table table-condensed table-hover table-bordered" style="margin-top: 0px !important;">
@@ -276,6 +276,25 @@ $_search    = trim(Request::input('buscar', ''));
             });
 
             oTable.on("click touchstart", ".edt-btn-modal", function (e) {
+                e.preventDefault();
+
+                var myiframe = jQuery('<iframe>', {
+                    name: 'edit-item-modal',
+                    src: jQuery(this).attr('data-route-value'),
+                    style: 'border:none;',
+                    width: '100%',
+                    height: jQuery(window).height() * 0.7
+                });
+
+                var modalShowItem = jQuery('#edit-item');
+                var modalBody = modalShowItem.find('.modal-body');
+                modalBody.find('iframe').remove();
+                modalBody.append(myiframe);
+
+                modalShowItem.modal('show');
+            });
+
+            jQuery("#CrudTopNew").click(function(e) {
                 e.preventDefault();
 
                 var myiframe = jQuery('<iframe>', {

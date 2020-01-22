@@ -28,3 +28,7 @@
 .arbenef {
     width: 80px;
 }
+
+li.nav-item li.nav-item {
+    padding-left: 10px;
+}

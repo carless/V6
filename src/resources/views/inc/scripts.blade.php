@@ -70,7 +70,41 @@
             clearMaskOnLostFocus: true
         });
 
-        @stack('jquery_document_ready')
+        jQuery('.code6').each(function(e) {
+            jQuery(this).val(padLeft(jQuery(this).val(), 6));
+        });
+        jQuery('.code6').blur(function(e){
+            jQuery(this).val(padLeft(jQuery(this).val(), 6));
+        });
 
+        jQuery('.code6').keydown(function(e)
+        {
+            var key = e.charCode || e.keyCode || 0;
+            // allow backspace, tab, delete, enter, arrows, numbers and keypad numbers ONLY
+            // home, end, period, and numpad decimal
+            return (
+                key == 8 ||
+                key == 9 ||
+                key == 13 ||
+                key == 46 ||
+                key == 110 ||
+                key == 190 ||
+                (key >= 35 && key <= 40) ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
+        });
+
+        @stack('jquery_document_ready')
     });
+
+    function padLeft(value, length) {
+        return ('0'.repeat(length) + value).slice(-length);
+    }
 </script>
+{{--
+    /*
+    function padLeft(nr, n, str){
+        return Array(n-String(nr).length+1).join(str||'0')+nr;
+    }
+    */
+--}}

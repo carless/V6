@@ -7,6 +7,7 @@ trait Views
     protected $editView     = 'cesi::crud.edit';
     protected $editModalView= 'cesi::crud.editmodal';
     protected $createView   = 'cesi::crud.create';
+    protected $createModalView= 'cesi::crud.createmodal';
 
     protected $listContentClass;
     protected $editContentClass;
@@ -78,6 +79,28 @@ trait Views
     public function getCreateView()
     {
         return $this->createView;
+    }
+
+    /**
+     * Sets the create template.
+     *
+     * @param string $view name of the template file
+     *
+     * @return string $view name of the template file
+     */
+    public function setCreateModalView($view)
+    {
+        $this->createModalView = $view;
+        return $this->createModalView;
+    }
+
+    /**
+     * Gets the create template.
+     * @return string name of the template file
+     */
+    public function getCreateModalView()
+    {
+        return $this->createModalView;
     }
 
     /**

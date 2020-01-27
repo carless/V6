@@ -1,10 +1,10 @@
-<div class="filtro filtro_select filtro_{{$filtro->name}}">
+<div class="filtro filtro_select filtro_{{$filtro->name}}" style="float:left;">
     <label for="filter_{{$filtro->name}}" class="label_filter">{{$filtro->label}}</label>
     <div class="clearfix"></div>
     <select id="filter_{{$filtro->name}}" name="filter[{{$filtro->name}}]" onchange="this.form.submit();" class="form-control">';
-    <?php 
-    // \Cesi\Core\Helpers\CesiHelper::wdd($filtro); 
-    
+    <?php
+    // \Cesi\Core\Helpers\CesiHelper::wdd($filtro);
+
     // $dflt_value = '-1';
     // if (isset($filtro->values) && $filtro->values) {
     //    $dflt_value = $filtro->values;
@@ -24,7 +24,7 @@
                 print ' selected';
             }
             print '>' . $value ."</option>";
-       } 
+       }
     }
     // echo '</select>';
     // $list_values = $filtro['datos'];

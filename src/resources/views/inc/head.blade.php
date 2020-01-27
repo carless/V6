@@ -38,6 +38,7 @@
 <link rel="stylesheet" href="{{ asset('vendor/cesi/core/plugins/select2/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/cesi/core/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/cesi/core/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/cesi/core/plugins/datepicker/css/bootstrap-datepicker3.css') }}">
 
 <link rel="stylesheet" href="{{ asset('vendor/cesi/core/plugins/pnotify/pnotify.custom.min.css') }}">
 

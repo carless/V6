@@ -32,3 +32,17 @@
 li.nav-item li.nav-item {
     padding-left: 10px;
 }
+
+.table th,
+.table td {
+    padding: 0.50rem;
+}
+
+#DTTableMyTask th,
+#DTTableMyTask td {
+    padding: 0.25rem;
+}
+
+#DTTableMyTask_paginate {
+    display: none;
+}

@@ -7,8 +7,49 @@
  */
 namespace Cesi\Core\app\App\Helpers;
 
+use Cesi\Core\app\Models\TaskStatus;
+
 class CesiCoreHelper
 {
+    private static $cacheTaskStatus = array();
+
+    public static function getTaskStatus($keyId)
+    {
+        if (isset(self::$cacheTaskStatus[$keyId])) {
+
+        } else {
+            $myTaskStatus = TaskStatus::find($keyId);
+            self::$cacheTaskStatus[$keyId] = $myTaskStatus;
+        }
+
+        return self::$cacheTaskStatus[$keyId];
+    }
+
+    /**
+     * Devuelve un array con los tipos de prioridad para las tareas
+     *
+     * @return array
+     */
+    public static function getTaskPrioridad()
+    {
+        return [
+            '1' => 'Baja',
+            '2' => 'Media',
+            '3' => 'Alta',
+            '4' => 'Crítica',
+        ];
+    }
+
+    public static function getSelectTaskPrioridad()
+    {
+        return [
+            '0' => '- Todos -',
+            '1' => 'Baja',
+            '2' => 'Media',
+            '3' => 'Alta',
+            '4' => 'Crítica',
+        ];
+    }
 
     public static function getDashboardAreas()
     {
@@ -26,6 +67,7 @@ class CesiCoreHelper
         return [
             'small-box' => 'Caja pequeña',
             'info-box'  => 'Caja Información',
+            'mytask'    => 'Lista Tareas',
         ];
     }
 

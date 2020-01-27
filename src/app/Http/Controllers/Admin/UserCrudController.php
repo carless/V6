@@ -202,4 +202,12 @@ class UserCrudController extends CrudController
         }
         return parent::getRedirectAfterSave($record, $request, $tipo);
     }
+
+    public function ajaxFormatResult($record)
+    {
+        return [
+            'id'        => $record->id,
+            'text'      => $record->name,
+        ];
+    }
 }

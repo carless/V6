@@ -98,6 +98,9 @@ Route::group([
             'as' => 'dashboarditems.movedown',
             'uses' => 'CoreDashboardItemsController@movedown'
         ]);
+
+    CESI::registerRouter('taskstatus', 'TaskStatusController');
+    CESI::registerRouter('task', 'CoreTaskController');
 });
 
 /*

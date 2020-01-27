@@ -8,6 +8,8 @@
 <script src="{{ asset('vendor/cesi/core/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}" ></script>
 <script src="{{ asset('vendor/cesi/core/plugins/inputmask/dist/jquery.inputmask.min.js') }}"></script>
 <script src="{{ asset('vendor/cesi/core/plugins/inputmask/dist/bindings/inputmask.binding.js') }}"></script>
+<script src="{{ asset('vendor/cesi/core/plugins/datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('vendor/cesi/core/plugins/datepicker/locales/bootstrap-datepicker.es.min.js') }}"></script>
 
 <script src="{{ asset('vendor/cesi/core/plugins/sweetalert2/sweetalert2.min.js') }}" ></script>
 
@@ -27,6 +29,26 @@
 
     jQuery(document).ready(function($) {
         jQuery.fn.select2.defaults.set("theme", "bootstrap4");
+
+        jQuery('.date').datepicker({
+            format: "dd-mm-yyyy",
+            weekStart: 1,
+            language: "es",
+            todayBtn: true,
+            clearBtn: true,
+            todayHighlight: true,
+            autoclose: true
+        });
+
+        jQuery('.datepicker').datepicker({
+            format: "dd-mm-yyyy",
+            weekStart: 1,
+            language: "es",
+            todayBtn: true,
+            clearBtn: true,
+            todayHighlight: true,
+            autoclose: true
+        });
 
         jQuery("input.percent").inputmask("percentage", {
             autoUnmask: true,

@@ -1,4 +1,4 @@
-<div class="filtro filtro_slc_sino">
+<div class="filtro filtro_slc_sino" style="float:left;">
     <?php // \Cesi\Core\Helpers\CesiHelper::wdd($filtro); ?>
     <label for="filter_{{$filtro->name}}" class="label_filter">{{$filtro->label}}</label>
     <div class="clearfix"></div>

@@ -49,7 +49,7 @@
                 @endforeach
             </div>
         @endif
-        
+
         <div class="row">
             @if ($mod_left)
                 <div class="col-lg-3 col-md-3 col-sm-6 col-12">
@@ -67,9 +67,9 @@
                 @foreach ($positions['center'] as $item)
                     <?php
                     $cfg = $item->config;
-                    $type = $cfg->tipo;
+                    $type = $item->tipo;
                     ?>
-                    @include('cesicore::dashboarditems.'. $type, ['item' => $cfg])
+                    @include('cesi::core.dashboarditems.'. $type, ['item' => $cfg])
                 @endforeach
             </div>
 

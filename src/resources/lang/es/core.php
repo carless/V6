@@ -104,6 +104,16 @@ return [
             'guard_type'    => 'Guard',
         ]
     ],
+    'users' => [
+        'name_singular'   => 'Usuario',
+        'name_plural'     => 'Usuarios',
+        'select' => '- Seleccionar -',
+        'fields' => [
+            'name'      => 'Nombre Usuario',
+            'email'     => 'Email',
+            ],
+    ],
+
     'crud' => [
         'unauthorized_access' => 'Acceso denegado - usted no tiene los permisos necesarios para ver esta página.',
         'please_fix' => 'Por favor corrija los siguientes errores:',
@@ -218,6 +228,39 @@ return [
             'rgt'   => 'rgt',
             'move'  => 'move',
             'parent_id'   => 'Parent',
+        ],
+    ],
+
+    'taskstatus' => [
+        'name_singular'   => 'Tipo Tarea',
+        'name_plural'     => 'Tipos de Tareas',
+        'select' => '- Seleccionar -',
+        'fields' => [
+            'name'      => 'Nombre',
+            'classname' => 'Clase',
+        ],
+    ],
+
+    'task' => [
+        'name_singular'   => 'Tarea',
+        'name_plural'     => 'Tareas',
+        'select' => '- Seleccionar -',
+        'fields' => [
+            'name'          => 'Nombre',
+            'status'        => 'Estado',
+            'description'   => 'Descripción',
+            'asigned_user'  => 'Asignado',
+            'statusname'    => 'Estado',
+            'prioridad'     => 'Prioridad',
+            'fecha_inicio'  => 'F.Inicio',
+            'fecha_final'   => 'F.final',
+            'progreso'      => 'Progreso',
+        ],
+        'filters' => [
+            'prioridad'     => 'Prioridad',
+            'prioridad_select' => 'Seleccionar prioridad',
+            'status'        => 'Estado',
+            'asigned_user'  => 'Usuario Asignado',
         ],
     ],
 ];

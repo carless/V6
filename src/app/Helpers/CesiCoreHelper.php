@@ -7,6 +7,8 @@
  */
 namespace Cesi\Core\app\App\Helpers;
 
+use App\Models\Access\User\User;
+use Cesi\Core\app\Models\CesiUser;
 use Cesi\Core\app\Models\TaskStatus;
 
 class CesiCoreHelper
@@ -113,5 +115,23 @@ class CesiCoreHelper
         $result = str_replace("_", "", $result);
 
         return $result;
+    }
+
+    public static function getUserName($userId)
+    {
+        $user = CesiUser::find($userId);
+        if ($user) {
+            return $user->name;
+        }
+        return null;
+    }
+
+    public static function getUserEmail($userId)
+    {
+        $user = CesiUser::find($userId);
+        if ($user) {
+            return $user->email;
+        }
+        return null;
     }
 }

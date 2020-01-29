@@ -6,7 +6,8 @@ return [
     | Cesi\Core Language Lines
     |--------------------------------------------------------------------------
     */
-
+    'notifications'          => 'Avisos',
+    'messages'               => 'Mensajes',
     'registration_closed'    => 'El registro de usuarios está cerrado.',
     'first_page_you_see'     => 'La página que ves después de iniciar sesión',
     'login_status'           => 'Estado de la conexión',
@@ -263,4 +264,9 @@ return [
             'asigned_user'  => 'Usuario Asignado',
         ],
     ],
+    'mytask' => [
+        'name_singular'   => 'Mi Tarea',
+        'name_plural'     => 'Mis Tareas',
+        'pendientes'      => 'Tareas pendientes',
+        ]
 ];

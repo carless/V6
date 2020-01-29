@@ -101,6 +101,7 @@ Route::group([
 
     CESI::registerRouter('taskstatus', 'TaskStatusController');
     CESI::registerRouter('task', 'CoreTaskController');
+    CESI::registerRouter('mytask', 'CoreMyTaskController');
 });
 
 /*

@@ -59,6 +59,7 @@ trait OperationList
     public function getdataajax(Request $request)
     {
         if ($this->tienePermiso('list')) {
+            $this->setOperation('list');
             $records = $this->getList();
 
             $formatted_tags = [];

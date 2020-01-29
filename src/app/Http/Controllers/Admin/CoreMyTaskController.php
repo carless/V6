@@ -10,7 +10,7 @@ use Cesi\Core\libs\Controllers\CrudController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CoreTaskController extends CrudController
+class CoreMyTaskController extends CrudController
 {
     /**
      * @throws \Exception
@@ -18,14 +18,14 @@ class CoreTaskController extends CrudController
     public function setup()
     {
         $this->setModel(CoreTask::class);
-        $this->setEntityNameStrings(trans('cesi::core.task.name_singular'), trans('cesi::core.task.name_plural'));
-        $this->setRoute(cesi_url('core.task'));
-        $this->setRouterAlias('admin.core.task');
-        $this->setResourceAlias('cesi::core.admin.task');
-        $this->setPermissionName('admin.core.task');
+        $this->setEntityNameStrings(trans('cesi::core.mytask.name_singular'), trans('cesi::core.mytask.name_plural'));
+        $this->setRoute(cesi_url('core.mytask'));
+        $this->setRouterAlias('admin.core.mytask');
+        $this->setResourceAlias('cesi::core.admin.mytask');
+        $this->setPermissionName('admin.core.mytask');
 
-        $this->setDefaultOrderColumn('name');
-        $this->setDefaultOrderDirection('asc');
+        $this->setDefaultOrderColumn('fecha_inicio');
+        $this->setDefaultOrderDirection('desc');
 
         $this->initFilters();
 
@@ -62,16 +62,14 @@ class CoreTaskController extends CrudController
             'queryName' => 'core_taskmanager.status_id',
         ]);
 
+        $tmpUser = cesi_auth()->user();
+
         $this->addFilter([
             'name'  => 'fltUser',
             'label' => trans('cesi::core.task.filters.asigned_user'),
-            'type'  => 'select2',
-            'model' => CesiUser::class,
-            'style' => 'width:180px;',
-            'ajax'  => route('admin.core.user.getdataajax'),
-            'placeholder' => trans('cesi::core.users.select'),
+            'type'  => 'hidden',
             'queryName' => 'core_taskmanager.user_id',
-        ]);
+        ], $tmpUser->id);
     }
 
     public function initButtons()
@@ -208,5 +206,4 @@ class CoreTaskController extends CrudController
 
         return $values;
     }
-
 }

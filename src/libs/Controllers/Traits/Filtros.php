@@ -82,7 +82,7 @@ trait Filtros
         // add a new filter to the interface
         $filter = new CrudFilter($options, $values, $filter_logic, $fallback_logic);
         $this->filters->push($filter);
-    }    
+    }
 }
 
 class FiltersCollection extends Collection
@@ -104,9 +104,10 @@ class CrudFilter
     public $label;
     public $placeholder;
     public $values;
+    public $visible;
     public $options;
     public $logic;
-    public $fallbackLogic;    
+    public $fallbackLogic;
     public $currentValue;
     public $view;
     public $queryName;
@@ -144,7 +145,14 @@ class CrudFilter
             $this->view = $options['view'];
         }
 
+        if (!isset($options['visible'])) {
+            $this->visible = true;
+        } else {
+            $this->visible = $options['visible'];
+        }
+
         $this->values   = $values;
+        $this->currentValue   = $values;
         $this->options  = $options;
 
         $this->logic = $filter_logic;

@@ -10,7 +10,38 @@
     <!-- Right navbar links -->
     <div class="navbar-nav ml-auto">
 
+        <?php
+            $count_mytask = \Cesi\Core\app\Models\CoreTask::where('user_id', cesi_auth()->user()->id)
+                ->where('status_id', 1)
+                ->count();
+            $count_messages = 0;
+            $total_avisos = intval($count_mytask) + intval($count_messages);
+        ?>
         <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa-bell"></i>
+                @if ($total_avisos>0)
+                    <span class="badge badge-warning navbar-badge">{!! $total_avisos !!}</span>
+                @endif
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                @if ($count_mytask>0)
+                    <span class="dropdown-item dropdown-header"> {!! $count_mytask !!} {{trans('cesi::core.notifications')}}</span>
+                @endif
+                <div class="dropdown-divider"></div>
+                <a href="{!! route( 'admin.core.mytask.list') !!}" class="dropdown-item">
+                    <i class="fas fa-tasks mr-2"></i> {!! $count_mytask !!} {{trans('cesi::core.mytask.pendientes')}}
+                </a>
+
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item">
+                    <i class="fas fa-envelope mr-2"></i> {!! $count_messages !!} {{trans('cesi::core.messages')}}</span>
+                </a>
+            </div>
+        </li>
+
+        <!-- User Dropdown Menu -->
         <li class="nav-item dropdown user-menu">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-user"></i>

@@ -118,14 +118,63 @@ $_search    = trim(Request::input('buscar', ''));
     <script src="{{ asset('vendor/cesi/core/plugins/datatables/datatables.min.js') }}"></script>
     {{-- @include('cesi::inc.datatables_logic') --}}
 
+    {{--
+                'stateSaveParams': function(settings, data) {
+                    data.selected = this.api().rows({selected:true})[0];
+                },
+                'stateLoadParams': function(settings, data) {
+                    savedSelected = data.selected;
+                },
+                'initComplete': function() {
+                    this.api().rows(savedSelected).select();
+                    this.api().state.save();
+                },
+
+                drawCallback: function() {
+                    this.api().state.clear();
+                },
+                initComplete: function () {
+
+                },
+                stateSave:  true,
+
+select: {
+                    style:    'os',
+                    selector: 'td:first-child'
+                },
+
+                fnRowCallback: function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+                    // console.log( iDisplayIndex );
+                    // console.log( iDisplayIndexFull );
+                    // console.log( nRow );
+                    // console.log( aData );
+                    // jQuery(nRow).addClass( "c" + aData[0].replace(/\W/g, '') );
+                },
+
+
+
+
+                console.log(curr_pos);
+
+                var selected = oTable.row( { selected: true } );
+                if ( selected.any() ) {
+                    rowIdx = selected.index();
+                }
+                            var rowIdx = 0;
+            var rowID = 0;
+
+    --}}
     <script type="text/javascript">
         jQuery(document).ready(function($) {
+            var curr_pos = null;
+
             var oTable = $('#crudTable').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
-                searching: false,
-                select: 'single',
+                searching:  false,
+                select:     'single',
+                deferRender:true,
                 ajax:{
                     url: '{!! route( $routerAlias . '.getdata') !!}',
                     dataType: 'json',
@@ -143,8 +192,9 @@ $_search    = trim(Request::input('buscar', ''));
                         ?>
                     }
                 },
-                scrollY: '59vh',
+                scrollY:  '59vh',
                 scroller: true,
+                scrollCollapse: false,
                 columns: [
                         <?php
                         // if($showCheckAll) {
@@ -227,12 +277,17 @@ $_search    = trim(Request::input('buscar', ''));
                     }
                 },
                 dom: "<'row'<'col-sm-12'tr>>" +
-                    "<'row card-footer'<'col-sm-5'i><'col-sm-7'p>>"
+                    "<'row card-footer'<'col-sm-10'i><'col-sm-2'p>>"
             });
 
             oTable.on('draw', function () {
                 jQuery(".loader").fadeOut("slow");
-//                console.log( 'Redraw occurred at: '+new Date().getTime() );
+
+                if (curr_pos != null) {
+                    jQuery(oTable.settings()[0].nScrollBody).scrollTop( curr_pos.top );
+                    jQuery(oTable.settings()[0].nScrollBody).scrollLeft( curr_pos.left );
+                    curr_pos = null;
+                }
             });
 
             jQuery('#dtbtnrefresh').on("click touchstart", function (e) {
@@ -251,7 +306,6 @@ $_search    = trim(Request::input('buscar', ''));
             jQuery('#edit-item').on('hidden.bs.modal', function (e) {
                 jQuery(".loader").fadeIn("slow");
                 e.preventDefault();
-                console.log('Se ha cerrado la ventana modal');
                 oTable.draw(false);
             });
 
@@ -267,6 +321,7 @@ $_search    = trim(Request::input('buscar', ''));
 
             jQuery('#btn_save_edit').on("click touchstart", function (e) {
                 e.preventDefault();
+
                 var modalShowItem = jQuery('#edit-item');
 
                 var modalBody = modalShowItem.find('.modal-body');
@@ -277,6 +332,11 @@ $_search    = trim(Request::input('buscar', ''));
 
             oTable.on("click touchstart", ".edt-btn-modal", function (e) {
                 e.preventDefault();
+
+                curr_pos = {
+                    'top': jQuery(oTable.settings()[0].nScrollBody).scrollTop(),
+                    'left': jQuery(oTable.settings()[0].nScrollBody).scrollLeft()
+                };
 
                 var myiframe = jQuery('<iframe>', {
                     name: 'edit-item-modal',

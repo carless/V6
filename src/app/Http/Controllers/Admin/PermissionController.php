@@ -46,6 +46,21 @@ class PermissionController extends CrudController
         ]);
     }
 
+    public function initButtons()
+    {
+        parent::initButtons();
+
+        if ($this->tienePermiso('update')) {
+            $this->removeButton('update', 'line');
+            $this->addButton('line', 'update', 'view', 'cesi::crud.buttons.updatemodal', 'beginning');
+        }
+
+        if ($this->tienePermiso('create')) {
+            $this->removeButton('create', 'top');
+            $this->addButton('top', 'create', 'view', 'cesi::crud.buttons.createmodal', 'beginning');
+        }
+    }
+
     /**
      * @param array $data
      * @return array

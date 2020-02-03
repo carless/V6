@@ -4,12 +4,11 @@
 <script type="text/javascript">
   jQuery(document).ready(function($) {
 
-    PNotify.prototype.options.styling = "bootstrap3";
+    PNotify.prototype.options.styling = "bootstrap4";
     PNotify.prototype.options.styling = "fontawesome";
 
     @foreach (Alert::getMessages() as $type => $messages)
         @foreach ($messages as $message)
-
             $(function(){
               new PNotify({
                 // title: 'Regular Notice',
@@ -18,7 +17,6 @@
                 icon: false
               });
             });
-
         @endforeach
     @endforeach
   });

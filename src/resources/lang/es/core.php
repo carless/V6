@@ -137,6 +137,7 @@ return [
         'search_placeholder'        => 'Buscar',
         'cancel'                    => 'Cancelar',
         'save'                      => 'Guardar',
+        'send'                      => 'Enviar',
 
         'details_row'               => 'Esta es la fila de detalles. Modificar a su gusto.',
         'details_row_loading_error' => 'Se ha producido un error al cargar los datos. Por favor, intente de nuevo.',
@@ -268,5 +269,23 @@ return [
         'name_singular'   => 'Mi Tarea',
         'name_plural'     => 'Mis Tareas',
         'pendientes'      => 'Tareas pendientes',
-        ]
+    ],
+    'emailtmpl' => [
+        'name_singular'   => 'Plantilla Email',
+        'name_plural'     => 'Plantillas de Email',
+        'actions'   => [
+            'sendtest' => 'Test envio',
+        ],
+        'fields' => [
+            'name'          => 'Nombre',
+            'slug'          => 'Alias',
+            'theme'         => 'Tema',
+            'from'          => 'De',
+            'from_email'    => 'From (email)',
+            'from_name'     => 'From (nombre)',
+            'cc_email'      => 'CC',
+            'subject'       => 'Asunto',
+            'content'       => 'Mensaje',
+            ],
+    ]
 ];

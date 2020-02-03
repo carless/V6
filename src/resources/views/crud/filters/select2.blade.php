@@ -65,7 +65,7 @@
                 data: function (params) {
                     return {
                         buscar: $.trim(params.term),
-                        length: 10
+                        length: 90
                     };
                 },
                 processResults: function (data) {

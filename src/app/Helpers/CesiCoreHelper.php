@@ -7,13 +7,49 @@
  */
 namespace Cesi\Core\app\App\Helpers;
 
-use App\Models\Access\User\User;
 use Cesi\Core\app\Models\CesiUser;
+use Cesi\Core\app\Models\CoreSettings;
 use Cesi\Core\app\Models\TaskStatus;
 
 class CesiCoreHelper
 {
     private static $cacheTaskStatus = array();
+    private static $cacheSettings = array();
+
+    public static function getConfiguracion($keyName, $defaultValue = null)
+    {
+        if (isset(self::$cacheSettings[$keyName])) {
+            return self::$cacheSettings[$keyName];
+        } else {
+            $mySetting = CoreSettings::where('key', $keyName)->first();
+
+            if ($mySetting === null) {
+                // No exite
+                $mySetting = new CoreSettings([
+                    'key' => $keyName,
+                    'description' => 'Descripcion para ' . $keyName,
+                    'value' => $defaultValue
+                ]);
+                $mySetting->save();
+            }
+
+            self::$cacheSettings[$keyName] = $mySetting->value;
+
+            return $mySetting->value;
+        }
+    }
+
+    /**
+     * Devuelve un array con los tipos de prioridad para las tareas
+     *
+     * @return array
+     */
+    public static function getEmailTmplTheme()
+    {
+        return [
+            'cesi::core.mail.standart.mailtemplate' => 'Standart',
+        ];
+    }
 
     public static function getTaskStatus($keyId)
     {

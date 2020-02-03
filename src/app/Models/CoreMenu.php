@@ -114,8 +114,10 @@ class CoreMenu extends Model
             }
         } else {
             // echo "findOrCreate Permission to " . $this->link . "<br/>";
-            \Spatie\Permission\Models\Permission::findOrCreate($this->link, 'web');
-            $lreturn = $lreturn || cesi_user()->hasPermissionTo($this->link);
+            if (!empty($this->link)) {
+                \Spatie\Permission\Models\Permission::findOrCreate($this->link, 'web');
+                $lreturn = $lreturn || cesi_user()->hasPermissionTo($this->link);
+            }
             // $lreturn = true;
         }
         return $lreturn;

@@ -102,6 +102,13 @@ Route::group([
     CESI::registerRouter('taskstatus', 'TaskStatusController');
     CESI::registerRouter('task', 'CoreTaskController');
     CESI::registerRouter('mytask', 'CoreMyTaskController');
+
+
+    Route::post('emailtmpl/sendtest', [
+        'as' => 'emailtmpl.sendtest',
+        'uses' => 'EmailTmplController@sendtest'
+    ]);
+    CESI::registerRouter('emailtmpl', 'EmailTmplController');
 });
 
 /*

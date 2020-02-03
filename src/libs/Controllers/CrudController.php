@@ -17,17 +17,11 @@ use Cesi\Core\libs\Controllers\Traits\Read;
 use Cesi\Core\libs\Controllers\Traits\Save;
 use Cesi\Core\libs\Controllers\Traits\Views;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
-class CrudController extends BaseController
+class CrudController extends CoreBaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     use Acceso, Operation, HeadingsAndTitle, Views, Buttons, Columns, Read, Query, Listado, Save, filtros;
     use OperationList, OperationCreate, OperationUpdate, OperationDelete;
 

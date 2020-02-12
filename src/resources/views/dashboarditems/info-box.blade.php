@@ -12,11 +12,27 @@ try {
 <!-- .info-box -->
 <div class="info-box {{$item->classe}}">
     @if(isset($item->icono) && !empty($item->icono))
-        <span class="info-box-icon"><i class="{{$item->icono}}"></i></span>
+        <span class="info-box-icon">
+            @if(isset($item->link) && !empty($item->link))
+                <a href="{{ route($item->link) }}" class="info-box-link" title="{{$item->titulo}}">
+            @endif
+            <i class="{{$item->icono}}"></i>
+            @if(isset($item->link) && !empty($item->link))
+                </a>
+            @endif
+        </span>
     @endif
 
     <div class="info-box-content">
-        <span class="info-box-text">{{$item->titulo}}</span>
+        <span class="info-box-text">
+            @if(isset($item->link) && !empty($item->link))
+                <a href="{{ route($item->link) }}" class="info-box-link" title="{{$item->titulo}}">
+            @endif
+            {{$item->titulo}}
+            @if(isset($item->link) && !empty($item->link))
+                </a>
+            @endif
+        </span>
         <span class="info-box-number">{{$number}}</span>
 
         {{--

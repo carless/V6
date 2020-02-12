@@ -40,7 +40,7 @@
                 $entry->updated_at = $entry->updated_at->toDateTimeString();
             }
             ?>
-            <input type="text" class="form-control" name="updated_at" value="{{ old('updated_at', $entry->updated_at) }}" placeholder="updated_at" readonly="readonly">
+            <input type="text" class="form-control" name="updated_at" value="{{ old('updated_at', $entry->updated_at) }}" readonly="readonly">
         </div>
     </div>
 
@@ -53,8 +53,8 @@
                 $dspName = App\User::find($entry->updated_by)->name;
             }
             ?>
-            <input type="hidden" class="form-control" name="updated_by" value="{{ old('updated_by', $entry->updated_by) }}" placeholder="updated_by" readonly="readonly">
-            <input type="text" class="form-control" name="dsp_updated_by" value="{{ $dspName }}" placeholder="dsp_updated_by" readonly="readonly">
+            <input type="hidden" class="form-control" name="updated_by" value="{{ old('updated_by', $entry->updated_by) }}" readonly="readonly">
+            <input type="text" class="form-control" name="dsp_updated_by" value="{{ $dspName }}" readonly="readonly">
         </div>
     </div>
 </div>

@@ -30,6 +30,18 @@
     jQuery(document).ready(function($) {
         jQuery.fn.select2.defaults.set("theme", "bootstrap4");
 
+        /* Store sidebar state */
+        jQuery('[data-widget="pushmenu"]').click(function(event) {
+            event.preventDefault();
+            if (Boolean(sessionStorage.getItem('sidebar-toggle-collapsed'))) {
+                console.log('sidebar-toggle-collapsed 0');
+                sessionStorage.setItem('sidebar-toggle-collapsed', '');
+            } else {
+                console.log('sidebar-toggle-collapsed 1');
+                sessionStorage.setItem('sidebar-toggle-collapsed', '1');
+            }
+        });
+
         jQuery('.date').datepicker({
             format: "dd-mm-yyyy",
             weekStart: 1,

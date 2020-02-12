@@ -1,6 +1,7 @@
 <?php
 namespace Cesi\Core;
 
+use Cesi\Core\App\Console\CompileCesi;
 use Cesi\Core\libs\Models\Nested\NestedSet;
 use Cesi\Core\libs\Router\CesiRouter;
 use Illuminate\Database\Schema\Blueprint;
@@ -190,7 +191,7 @@ class CesiCoreServiceProvider extends ServiceProvider
         $this->loadHelpers();
 
         // register the artisan commands
-        // $this->commands($this->commands);
+        $this->commands([CompileCesi::class]);
 
         $loader = AliasLoader::getInstance();
         $loader->alias('CESI', \Cesi\Core\CesiCoreServiceProvider::class);

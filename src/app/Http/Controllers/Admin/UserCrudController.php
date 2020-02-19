@@ -1,6 +1,7 @@
 <?php
 namespace Cesi\Core\app\Http\Controllers\Admin;
 
+use Cesi\Core\app\Models\CesiUser;
 use Cesi\Core\app\Models\Role;
 use Cesi\Core\libs\Controllers\CrudController;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class UserCrudController extends CrudController
 
     public function setup()
     {
-        $this->setModel(config('cesi.core.permissionmanager.models.user'));
+        $this->setModel(CesiUser::class);
         $this->setEntityNameStrings(trans('cesi::core.permissionmanager.user'), trans('cesi::core.permissionmanager.users'));
         $this->setRoute(cesi_url('core.user'));
         $this->setRouterAlias('admin.core.user');
@@ -89,9 +90,9 @@ class UserCrudController extends CrudController
     {
         return [
             'rules' => [
-                'name' => 'required|min:3|max:255',
-                'email' => 'required|email|max:255|unique:users,email',
-                'password' => 'required|confirmed|min:6',
+                'name'      => 'required|min:3|max:255',
+                'email'     => 'required|email|max:255|unique:users,email',
+                'password'  => 'required|confirmed|min:6',
             ],
             'messages' => [],
             'attributes' => [],
@@ -110,9 +111,9 @@ class UserCrudController extends CrudController
     {
         return [
             'rules' => [
-                'name' => 'required|min:3|max:255',
-                'email' => 'required|email|max:255|unique:users,email,'.$record->id,
-                'password' => 'nullable|confirmed|min:6',
+                'name'      => 'required|min:3|max:255',
+                'email'     => 'required|email|max:255|unique:users,email,'.$record->id,
+                'password'  => 'nullable|confirmed|min:6',
             ],
             'messages' => [],
             'attributes' => [],
@@ -152,6 +153,7 @@ class UserCrudController extends CrudController
         $values['name']     = $request->input('name', '');
         $values['email']    = $request->input('email', '');
         $values['status']   = $request->input('status', 0);
+        $values['signature']= $request->input('signature', '');
 
         // dd($request);
         // dd($values);

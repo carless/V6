@@ -100,6 +100,12 @@ class CoreBaseController extends Controller
             });
 
         } catch (Exception $exception) {
+            echo "error " . $exception->getMessage() . "\n<br/>";
+            echo "";
+            echo "getCode(): " . $exception->getCode();
+            echo "";
+            echo "__toString(): " . $exception->__toString();
+            die();
             return false;
         }
         return true;

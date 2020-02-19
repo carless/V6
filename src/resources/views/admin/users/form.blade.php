@@ -57,6 +57,23 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card card-primary card-outline card-outline-tabs">
+                <div class="card-header p-0 border-bottom-0">
+                    <ul class="nav nav-tabs" id="user-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="user-tabs-general-tab" data-toggle="pill" href="#user-tabs-general" role="tab" aria-controls="user-tabs-general" aria-selected="true">{{trans('cesi::core.users.tabs.signature')}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body p-0">
+                    <div class="tab-content" id="user-tabs-tabContent">
+                        <div class="tab-pane fade show active" id="user-tabs-general" role="tabpanel" aria-labelledby="user-tabs-general-tab">
+                            @include('cesi::core.admin.users.form_signature')
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-3 col-sm-3 col-xs-12">

@@ -109,6 +109,8 @@ Route::group([
         'uses' => 'EmailTmplController@sendtest'
     ]);
     CESI::registerRouter('emailtmpl', 'EmailTmplController');
+
+    CESI::registerRouter('preimpresos', 'CorePreimpresosController');
 });
 
 /*

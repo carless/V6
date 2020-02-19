@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Carless
- * Date: 13/12/2019
- * Time: 10:00
- */
 namespace Cesi\Core\app\App\Helpers;
 
 use Cesi\Core\app\Models\CesiUser;
@@ -119,6 +113,14 @@ class CesiCoreHelper
         ];
     }
 
+    public static function getTiposPreImpresos()
+    {
+        return [
+            '0' => '- Sin -',
+            '1' => 'ISP Carta de dominio',
+        ];
+    }
+
     /**
      * quita el formato de moneda
      *
@@ -169,5 +171,32 @@ class CesiCoreHelper
             return $user->email;
         }
         return null;
+    }
+
+    public static function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\pL\d]+~u', '_', $text);
+
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+
+        // trim
+        $text = trim($text, '_');
+
+        // remove duplicate -
+        $text = preg_replace('~-+~', '_', $text);
+
+        // lowercase
+        $text = strtolower($text);
+
+        if (empty($text)) {
+            return 'n-a';
+        }
+
+        return $text;
     }
 }

@@ -113,6 +113,9 @@ return [
             'name'      => 'Nombre Usuario',
             'email'     => 'Email',
             ],
+        'tabs' => [
+            'signature' => 'Firma',
+        ],
     ],
 
     'crud' => [
@@ -138,6 +141,9 @@ return [
         'cancel'                    => 'Cancelar',
         'save'                      => 'Guardar',
         'send'                      => 'Enviar',
+        'print'                     => 'Imprimir',
+        'upload'                    => 'Subir',
+        'select_file'               => 'Seleccionar archivo',
 
         'details_row'               => 'Esta es la fila de detalles. Modificar a su gusto.',
         'details_row_loading_error' => 'Se ha producido un error al cargar los datos. Por favor, intente de nuevo.',
@@ -287,5 +293,67 @@ return [
             'subject'       => 'Asunto',
             'content'       => 'Mensaje',
             ],
-    ]
+    ],
+
+    'preimpresos' => [
+        'name_singular'   => 'Pre-Impreso',
+        'name_plural'     => 'Pre-Impresos',
+        'select' => '- Seleccionar -',
+        'tabs'  => [
+            'ajustes'   => 'Ajustes',
+        ],
+        'fields' => [
+            'name'          => 'Nombre',
+            'slug'          => 'Alias',
+            'tipo'          => 'Tipo',
+            'papel'         => 'Papel',
+            'orientacion'   => 'Orien.',
+            'status'        => 'Estado',
+            'activo'        => 'Activo',
+            'margenCab'     => 'Margen Cabecera',
+            'margenPie'     => 'Margen Pie',
+            'margenIzq'     => 'Margen Izquierdo',
+            'margenDer'     => 'Margen Derecho',
+            'mostrarCab'    => 'Mostrar Cabecera',
+            'show'          => 'Mostrar',
+            'mostrarLogo'   => 'Mostrar Logo',
+            'logoPosX'      => 'Logo (Pos X)',
+            'logoPosY'      => 'Logo (Pos Y)',
+            'mostrarTitulo' => 'Mostrar Título',
+            'mostrarSubtitulo' => 'Mostrar subtítulo',
+            'tituloPosX'    => 'Titulo (Pos X)',
+            'tituloPosY'    => 'Titulo (Pos Y)',
+            'mostrarPie'    => 'Mostrar pie',
+            'pieSeparador'  => 'Mostrar sep. horizontal',
+            'pieFecha'      => 'Mostrar Fecha',
+            'pieHora'       => 'Mostrar Hora',
+            'pieNumPag'     => 'Mostrar Num.Pag.',
+            'pieNumParte'   => 'Mostrar Num.Pdf',
+            'archivo'       => 'Archivo PDF',
+        ],
+        'textos' => [
+            'margenes'      => 'Indique los márgenes en milímetros (superior, inferior, izquiero y derecho), ' .
+                                'para que el programa no escriba encima de sus textos o imágenes preimpresas ' .
+                                'en el documento final. Para que el programa use los márgenes automáticos ' .
+                                'deje todos los valores a cero.',
+            'showcab'       =>  "Indique si quiere se muestren o no los objetos y textos que el programa " .
+                                "genera automáticamente en un listado (logo organización / empresa, título y " .
+                                "subtítulo del listado)",
+            'showlogo'      =>  "Si quiere mostrar el logo automático del programa, puede forzar una posición " .
+                                "con sus coordenadas en milímetros (x,y), donde (0,0) es el vértice superior " .
+                                "izquierdo. Si deja los valores a cero el programa mostrará el logo arriba a " .
+                                "la izquierda.",
+            'showtitulo'    =>  "Si quiere mostrar el título/subtítulo automático del programa, puede forzar " .
+                                "una posición con sus coordenadas en milímetros (x,y), donde (0,0) es el " .
+                                "vértice superior izquierdo. Si deja los valores a cero el programa mostrará " .
+                                "los títulos arriba a la derecha del logo.",
+            'showpie'       =>  "Indique si quiere se muestren o no los objetos y textos que el programa " .
+                                "genera automáticamente en un listado (pie con fecha/hora impresión y números " .
+                                "de página)"
+        ],
+        'validations' => [
+            'name_required' => 'El campo es imprescindible. No se puede dejar vacio.',
+            'name_max'      => 'El campo Nombre puede tener un máx de 255 caracteres.',
+        ],
+    ],
 ];

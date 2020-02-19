@@ -23,7 +23,7 @@ class CesiUser extends User
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'status',
+        'name', 'email', 'password', 'status', 'signature',
     ];
 
     /**

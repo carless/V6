@@ -133,6 +133,17 @@ li.nav-item li.nav-item {
     font-weight: bolder;
 }
 
+.select2-container--bootstrap4 .select2-purple .select2-selection--multiple .select2-selection__choice,
+.select2-purple .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice {
+    background-color: #6f42c1;
+    border-color: #643ab0;
+    color: #fff;
+}
+.select2-container--bootstrap4 .select2-purple .select2-selection--multiple .select2-selection__choice__remove,
+.select2-purple .select2-container--bootstrap4 .select2-selection--multiple .select2-selection__choice__remove {
+    color: rgba(255,255,255,.7);
+}
+
 .info-box .info-box-link {
     color: #fff !important;
     text-decoration: none;
@@ -145,3 +156,9 @@ li.nav-item li.nav-item {
     color: #000 !important;
     text-decoration: none;
 }
+
+
+/*Custom Fileinputs start*/
+.custom-file-input input[type=file] { display: none; }
+.custom-file-input .inputfile + label { max-width: 100%; font-size: 14px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; display: inline-block; padding: 8px 12px; margin-bottom: 0; height: 36px; border:1px solid var(--theme-co) }
+.custom-file-input .inputfile + label .fa { margin-right: 10px; }

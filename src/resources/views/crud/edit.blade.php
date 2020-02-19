@@ -35,7 +35,7 @@ $_updateLink    = route($routerAlias.'.update', $entry->getKey());
         <div class="{{ $contentClass }}">
             <form method="post" class="form-block" id="mainform" autocomplete="off"
                   action="{{ $_updateLink }}"
-                  @if ($hasUploadFields))
+                  @if ($hasUploadFields)
                         enctype="multipart/form-data"
                   @endif
                 >

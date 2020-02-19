@@ -131,6 +131,7 @@
             font-size: 14px;
             font-weight: normal;
             margin: 0;
+            Margin-bottom: 15px;
         }
 
         p li,
@@ -244,45 +245,6 @@
             color: #ffffff;
         }
 
-        .header-content p {
-            font-size: 12px;
-            color: #ffffff;
-            font-weight: bold;
-        }
-
-        .article-title {
-            font-size: 18px;
-            line-height: 24px;
-            color: #b0b0b0;
-            font-weight: bold;
-            margin-top: 0px;
-            margin-bottom: 18px;
-            font-family: 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif;
-        }
-
-        .article-content {
-            font-size: 13px;
-            line-height: 18px;
-            color: #444444;
-            margin-top: 0px;
-            margin-bottom: 18px;
-            font-family: 'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif;
-        }
-
-        .footer-content {
-            background-color: #c7c7c7;
-            font-size: 12px;
-            color: #ffffff;
-        }
-
-        .footer-content-right {
-            font-size: 11px;
-            line-height: 16px;
-            color: #ffffff;
-            margin-top: 0px;
-            margin-bottom: 15px;
-        }
-
         /* -------------------------------------
             RESPONSIVE AND MOBILE FRIENDLY STYLES
         ------------------------------------- */
@@ -384,8 +346,14 @@
                     <!-- START CENTERED WHITE CONTAINER -->
                     <table class="main">
                         <tr>
-                            <td>
-                                {!!$content!!}
+                            <td class="wrapper">
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td>
+                                            {!!$content!!}
+                                        </td>
+                                    </tr>
+                                </table>
                             </td>
                         </tr>
                     </table>

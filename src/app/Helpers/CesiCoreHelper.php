@@ -100,6 +100,7 @@ class CesiCoreHelper
             'small-box' => 'Caja pequeña',
             'info-box'  => 'Caja Información',
             'mytask'    => 'Lista Tareas',
+            'list-box'  => 'Lista datos',
         ];
     }
 

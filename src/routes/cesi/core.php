@@ -111,6 +111,9 @@ Route::group([
     CESI::registerRouter('emailtmpl', 'EmailTmplController');
 
     CESI::registerRouter('preimpresos', 'CorePreimpresosController');
+
+    Route::get('notification/getlist', 'CoreNotificationController@ajaxNotifications')
+        ->name('notification.getlist');
 });
 
 /*

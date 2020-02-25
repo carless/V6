@@ -9,6 +9,15 @@
 
     <!-- Right navbar links -->
     <div class="navbar-nav ml-auto">
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown notifications-menu">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa-bell"></i>
+                <span class="badge badge-info navbar-badge notification-counter"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right notification-menu-container">
+            </div>
+        </li>
 
         <?php
             $count_mytask = \Cesi\Core\app\Models\CoreTask::where('user_id', cesi_auth()->user()->id)
@@ -17,10 +26,11 @@
             $count_messages = 0;
             $total_avisos = intval($count_mytask) + intval($count_messages);
         ?>
-        <!-- Notifications Dropdown Menu -->
+
+        <!-- Task Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
+                <i class="far fa-flag"></i>
                 @if ($total_avisos>0)
                     <span class="badge badge-warning navbar-badge">{!! $total_avisos !!}</span>
                 @endif

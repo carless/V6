@@ -128,8 +128,52 @@
                 (key >= 96 && key <= 105));
         });
 
+
+        getNotifications();
+        setInterval(function() {
+            getNotifications();
+        }, 60000); // 60 seconds
+
         @stack('jquery_document_ready')
     });
+
+    function getNotifications() {
+        $.ajax({
+            type: "GET",
+            url: "{{ route('admin.core.notification.getlist') }}",
+            dataType: 'JSON',
+            headers: { 'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content') },
+            statusCode: {
+                500: function () {
+                    Swal.fire({
+                        title: 'Error 500',
+                        text: 'An error occurred while sending data.',
+                        type: 'error'
+                    });
+                }
+            },
+            success: function (result) {
+                // console.log(result);
+                jQuery(".notification-counter").text(result.count);
+                if (result.count>=1) {
+                    jQuery(".notification-counter").css('display', 'block');
+                } else {
+                    jQuery(".notification-counter").css('display', 'none');
+                }
+                jQuery(".notification-menu-container").html(result.view);
+            },
+            error: function (data) {
+                $errors = data.responseJSON.errors;
+
+                Swal.fire({
+                    title: 'Error !!',
+                    text: data.responseJSON.errors,
+                    type: 'error'
+                });
+
+            }
+        });
+    }
 
     function padLeft(value, length) {
         return ('0'.repeat(length) + value).slice(-length);
